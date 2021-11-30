@@ -1,0 +1,457 @@
+nohup: 忽略输入
+./run.sh --stage 1 --stop_stage 1 --gpu_num 4 --update_freq 2 --train_config train_ctc.yaml --max_tokens 20000
+stage 1: ASR Network Training
+dev=0,1,2,3 data=/home/wangjie/code/part1/st/librispeech model=/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline
+[34mRun command: 
+python3 -u /home/wangjie/code/part1/Fairseq-ASR/fairseq_cli/train.py
+        /home/wangjie/code/part1/st/librispeech
+        --config-yaml config.yaml
+        --train-config /home/wangjie/code/part1/Fairseq-ASR/egs/librispeech/asr/conf/train_ctc.yaml
+        --task speech_to_text
+        --max-tokens 20000
+        --skip-invalid-size-inputs-valid-test
+        --update-freq 2
+        --log-interval 100
+        --save-dir /home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline
+        --tensorboard-logdir /home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline
+        --distributed-world-size 4
+        --ddp-backend no_c10d
+        --fp16
+        --validate-interval 1 
+        --keep-last-epochs 10  [0m
+2021-11-30 14:41:14 | INFO | fairseq.distributed.utils | distributed init (rank 1): tcp://localhost:14307
+2021-11-30 14:41:14 | INFO | fairseq.distributed.utils | distributed init (rank 0): tcp://localhost:14307
+2021-11-30 14:41:15 | INFO | fairseq.distributed.utils | distributed init (rank 2): tcp://localhost:14307
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Added key: store_based_barrier_key:1 to store for rank: 2
+2021-11-30 14:41:15 | INFO | fairseq.distributed.utils | distributed init (rank 3): tcp://localhost:14307
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Added key: store_based_barrier_key:1 to store for rank: 3
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Added key: store_based_barrier_key:1 to store for rank: 1
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Added key: store_based_barrier_key:1 to store for rank: 0
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Rank 1: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+2021-11-30 14:41:15 | INFO | fairseq.distributed.utils | initialized host localhost.localdomain as rank 0
+2021-11-30 14:41:15 | INFO | fairseq.distributed.utils | initialized host localhost.localdomain as rank 1
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Rank 3: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+2021-11-30 14:41:15 | INFO | fairseq.distributed.utils | initialized host localhost.localdomain as rank 3
+2021-11-30 14:41:15 | INFO | torch.distributed.distributed_c10d | Rank 2: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+2021-11-30 14:41:15 | INFO | fairseq.distributed.utils | initialized host localhost.localdomain as rank 2
+2021-11-30 14:41:18 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': True, 'log_interval': 100, 'log_format': None, 'tensorboard_logdir': '/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': None, 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False}, 'common_eval': {'_name': None, 'path': None, 'post_process': 'letter', 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 4, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': 'tcp://localhost:14307', 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'no_c10d', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': False, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 4, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 4}, 'dataset': {'_name': None, 'num_workers': 8, 'skip_invalid_size_inputs_valid_test': True, 'max_tokens': 20000, 'batch_size': None, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train-clean-100,train-clean-360,train-other-500', 'valid_subset': 'dev-clean', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': 20000, 'batch_size_valid': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 50, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 10.0, 'sentence_avg': False, 'update_freq': [2], 'lr': [0.002], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': '/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': 10, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': 10, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 4}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': Namespace(_name='s2t_transformer_s', activation_dropout=0.1, activation_fn='relu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_input=False, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='s2t_transformer_s', attention_dropout=0.1, azureml_logging=False, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=10.0, config_yaml='config.yaml', conv_channels=1024, conv_kernel_sizes='5,5', cpu=False, cpu_offload=False, criterion='label_smoothed_cross_entropy_with_ctc', ctc_weight=0.3, curriculum=0, data='/home/wangjie/code/part1/st/librispeech', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=4, decoder_attention_type='selfattn', decoder_embed_dim=256, decoder_ffn_embed_dim=2048, decoder_input_dim=256, decoder_layerdrop=0.0, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, decoder_output_dim=256, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=4, dropout='0.1', empty_cache_freq=0, encoder_attention_heads=4, encoder_attention_type='selfattn', encoder_embed_dim=256, encoder_ffn_embed_dim=2048, encoder_layers=12, encoder_normalize_before=True, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, gen_subset='test', heartbeat_timeout=-1, ignore_prefix_size=0, k_only=True, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=10, label_smoothing='0.1', load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_format=None, log_interval=100, lr=[0.002], lr_scheduler='inverse_sqrt', max_decoder_relative_length=-1, max_encoder_relative_length=-1, max_epoch=50, max_source_positions=6000, max_target_positions=1024, max_tokens=20000, max_tokens_valid=20000, max_update=100000, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, model_parallel_size=1, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=True, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=False, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=4, num_shards=1, num_workers=8, optimizer='adam', optimizer_overrides='{}', pad=1, patience=10, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, post_process='letter', profile=False, quant_noise_pq=0, quantization_config_path=None, report_accuracy=True, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=False, reset_logging=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', save_dir='/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_decoder_input_output_embed=False, simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, stop_min_lr=-1.0, stop_time_hours=0, suppress_crashes=False, task='speech_to_text', tensorboard_logdir='/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', threshold_loss_scale=None, tokenizer=None, tpu=False, train_config='/home/wangjie/code/part1/Fairseq-ASR/egs/librispeech/asr/conf/train_ctc.yaml', train_config1=None, train_config2=None, train_subset='train-clean-100,train-clean-360,train-other-500', unk=3, update_freq=[2], use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='dev-clean', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_init_lr=1e-07, warmup_updates=10000, weight_decay=0.0, write_checkpoints_asynchronously=False, zero_infinity=True, zero_sharding='none', **{'activation-dropout': '0.1', 'activation-fn': 'relu', 'attention-dropout': '0.1', 'conv-channels': '1024', 'conv-kernel-sizes': '5,5', 'decoder-attention-heads': '4', 'decoder-embed-dim': '256', 'decoder-ffn-embed-dim': '2048', 'decoder-layers': '6', 'encoder-attention-heads': '4', 'encoder-embed-dim': '256', 'encoder-ffn-embed-dim': '2048', 'encoder-layers': '12', 'share-decoder-input-output-embed': 'True'}), 'task': Namespace(_name='speech_to_text', activation_dropout=0.1, activation_fn='relu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_input=False, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='s2t_transformer_s', attention_dropout=0.1, azureml_logging=False, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=10.0, config_yaml='config.yaml', conv_channels=1024, conv_kernel_sizes='5,5', cpu=False, cpu_offload=False, criterion='label_smoothed_cross_entropy_with_ctc', ctc_weight=0.3, curriculum=0, data='/home/wangjie/code/part1/st/librispeech', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=4, decoder_attention_type='selfattn', decoder_embed_dim=256, decoder_ffn_embed_dim=2048, decoder_input_dim=256, decoder_layerdrop=0.0, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, decoder_output_dim=256, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=4, dropout='0.1', empty_cache_freq=0, encoder_attention_heads=4, encoder_attention_type='selfattn', encoder_embed_dim=256, encoder_ffn_embed_dim=2048, encoder_layers=12, encoder_normalize_before=True, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, gen_subset='test', heartbeat_timeout=-1, ignore_prefix_size=0, k_only=True, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=10, label_smoothing='0.1', load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_format=None, log_interval=100, lr=[0.002], lr_scheduler='inverse_sqrt', max_decoder_relative_length=-1, max_encoder_relative_length=-1, max_epoch=50, max_source_positions=6000, max_target_positions=1024, max_tokens=20000, max_tokens_valid=20000, max_update=100000, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, model_parallel_size=1, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=True, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=False, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=4, num_shards=1, num_workers=8, optimizer='adam', optimizer_overrides='{}', pad=1, patience=10, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, post_process='letter', profile=False, quant_noise_pq=0, quantization_config_path=None, report_accuracy=True, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=False, reset_logging=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', save_dir='/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_decoder_input_output_embed=False, simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, stop_min_lr=-1.0, stop_time_hours=0, suppress_crashes=False, task='speech_to_text', tensorboard_logdir='/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', threshold_loss_scale=None, tokenizer=None, tpu=False, train_config='/home/wangjie/code/part1/Fairseq-ASR/egs/librispeech/asr/conf/train_ctc.yaml', train_config1=None, train_config2=None, train_subset='train-clean-100,train-clean-360,train-other-500', unk=3, update_freq=[2], use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='dev-clean', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_init_lr=1e-07, warmup_updates=10000, weight_decay=0.0, write_checkpoints_asynchronously=False, zero_infinity=True, zero_sharding='none', **{'activation-dropout': '0.1', 'activation-fn': 'relu', 'attention-dropout': '0.1', 'conv-channels': '1024', 'conv-kernel-sizes': '5,5', 'decoder-attention-heads': '4', 'decoder-embed-dim': '256', 'decoder-ffn-embed-dim': '2048', 'decoder-layers': '6', 'encoder-attention-heads': '4', 'encoder-embed-dim': '256', 'encoder-ffn-embed-dim': '2048', 'encoder-layers': '12', 'share-decoder-input-output-embed': 'True'}), 'criterion': Namespace(_name='label_smoothed_cross_entropy_with_ctc', activation_dropout=0.1, activation_fn='relu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_input=False, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='s2t_transformer_s', attention_dropout=0.1, azureml_logging=False, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=10.0, config_yaml='config.yaml', conv_channels=1024, conv_kernel_sizes='5,5', cpu=False, cpu_offload=False, criterion='label_smoothed_cross_entropy_with_ctc', ctc_weight=0.3, curriculum=0, data='/home/wangjie/code/part1/st/librispeech', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=4, decoder_attention_type='selfattn', decoder_embed_dim=256, decoder_ffn_embed_dim=2048, decoder_input_dim=256, decoder_layerdrop=0.0, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, decoder_output_dim=256, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=4, dropout='0.1', empty_cache_freq=0, encoder_attention_heads=4, encoder_attention_type='selfattn', encoder_embed_dim=256, encoder_ffn_embed_dim=2048, encoder_layers=12, encoder_normalize_before=True, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, gen_subset='test', heartbeat_timeout=-1, ignore_prefix_size=0, k_only=True, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=10, label_smoothing='0.1', load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_format=None, log_interval=100, lr=[0.002], lr_scheduler='inverse_sqrt', max_decoder_relative_length=-1, max_encoder_relative_length=-1, max_epoch=50, max_source_positions=6000, max_target_positions=1024, max_tokens=20000, max_tokens_valid=20000, max_update=100000, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, model_parallel_size=1, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=True, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=False, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=4, num_shards=1, num_workers=8, optimizer='adam', optimizer_overrides='{}', pad=1, patience=10, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, post_process='letter', profile=False, quant_noise_pq=0, quantization_config_path=None, report_accuracy=True, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=False, reset_logging=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', save_dir='/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_decoder_input_output_embed=False, simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, stop_min_lr=-1.0, stop_time_hours=0, suppress_crashes=False, task='speech_to_text', tensorboard_logdir='/home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline', threshold_loss_scale=None, tokenizer=None, tpu=False, train_config='/home/wangjie/code/part1/Fairseq-ASR/egs/librispeech/asr/conf/train_ctc.yaml', train_config1=None, train_config2=None, train_subset='train-clean-100,train-clean-360,train-other-500', unk=3, update_freq=[2], use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='dev-clean', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_init_lr=1e-07, warmup_updates=10000, weight_decay=0.0, write_checkpoints_asynchronously=False, zero_infinity=True, zero_sharding='none', **{'activation-dropout': '0.1', 'activation-fn': 'relu', 'attention-dropout': '0.1', 'conv-channels': '1024', 'conv-kernel-sizes': '5,5', 'decoder-attention-heads': '4', 'decoder-embed-dim': '256', 'decoder-ffn-embed-dim': '2048', 'decoder-layers': '6', 'encoder-attention-heads': '4', 'encoder-embed-dim': '256', 'encoder-ffn-embed-dim': '2048', 'encoder-layers': '12', 'share-decoder-input-output-embed': 'True'}), 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.999)', 'adam_eps': 1e-08, 'weight_decay': 0.0, 'use_old_adam': False, 'tpu': False, 'lr': [0.002]}, 'lr_scheduler': {'_name': 'inverse_sqrt', 'warmup_updates': 10000, 'warmup_init_lr': 1e-07, 'lr': [0.002]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None, 'simul_type': None}
+2021-11-30 14:41:18 | INFO | fairseq.tasks.speech_to_text | dictionary size (spm_unigram10000.txt): 10,000
+2021-11-30 14:41:18 | INFO | fairseq.tasks.speech_to_text | asr dictionary size (spm_unigram10000.txt): 10,000
+2021-11-30 14:41:18 | INFO | fairseq.tasks.speech_to_text | pre-tokenizer: {'tokenizer': None}
+2021-11-30 14:41:18 | INFO | fairseq.tasks.speech_to_text | tokenizer: {'bpe': 'sentencepiece', 'sentencepiece_model': '/home/wangjie/code/part1/st/librispeech/spm_unigram10000.model'}
+2021-11-30 14:41:18 | INFO | fairseq.tasks.speech_to_text | src tokenizer: {'bpe': 'sentencepiece', 'sentencepiece_model': '/home/wangjie/code/part1/st/librispeech/spm_unigram10000.model'}
+2021-11-30 14:41:18 | INFO | fairseq.data.audio.speech_to_text_dataset | SpeechToTextDataset(split="dev-clean", n_samples=2703, prepend_tgt_lang_tag=False, shuffle=False, transforms=CompositeAudioFeatureTransform(
+    UtteranceCMVN(norm_means=True, norm_vars=True)
+))
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | S2TTransformerModel(
+  (encoder): S2TTransformerEncoder(
+    (dropout_module): FairseqDropout()
+    (subsample): Conv1dSubsampler(
+      (conv_layers): ModuleList(
+        (0): Conv1d(80, 1024, kernel_size=(5,), stride=(2,), padding=(2,))
+        (1): Conv1d(512, 512, kernel_size=(5,), stride=(2,), padding=(2,))
+      )
+    )
+    (embed_positions): SinusoidalPositionalEmbedding()
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (6): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (7): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (8): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (9): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (10): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (11): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+    (ctc_projection): Linear(in_features=256, out_features=10000, bias=False)
+    (ctc_dropout_module): FairseqDropout()
+    (softmax): Softmax(dim=-1)
+  )
+  (decoder): TransformerDecoderScriptable(
+    (dropout_module): FairseqDropout()
+    (embed_tokens): Embedding(10000, 256, padding_idx=1)
+    (embed_positions): SinusoidalPositionalEmbedding()
+    (layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=256, out_features=256, bias=True)
+          (v_proj): Linear(in_features=256, out_features=256, bias=True)
+          (q_proj): Linear(in_features=256, out_features=256, bias=True)
+          (out_proj): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=256, out_features=2048, bias=True)
+        (fc2): Linear(in_features=2048, out_features=256, bias=True)
+        (final_layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layer_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+    (output_projection): Linear(in_features=256, out_features=10000, bias=False)
+  )
+)
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | task: SpeechToTextTask
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | model: S2TTransformerModel
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | criterion: LabelSmoothedCrossEntropyCriterionWithCTC
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | num. model params: 34,656,256 (num. trained: 34,656,256)
+2021-11-30 14:41:19 | INFO | torch.distributed.distributed_c10d | Added key: store_based_barrier_key:2 to store for rank: 0
+2021-11-30 14:41:19 | INFO | torch.distributed.distributed_c10d | Rank 0: Completed store-based barrier for key:store_based_barrier_key:2 with 4 nodes.
+2021-11-30 14:41:19 | INFO | fairseq.trainer | detected shared parameter: encoder.ctc_projection.bias <- decoder.output_projection.bias
+2021-11-30 14:41:19 | INFO | fairseq.utils | ***********************CUDA enviroments for all 4 workers***********************
+2021-11-30 14:41:19 | INFO | fairseq.utils | rank   0: capabilities =  6.1  ; total memory = 10.916 GB ; name = NVIDIA GeForce GTX 1080 Ti              
+2021-11-30 14:41:19 | INFO | fairseq.utils | rank   1: capabilities =  6.1  ; total memory = 10.917 GB ; name = NVIDIA GeForce GTX 1080 Ti              
+2021-11-30 14:41:19 | INFO | fairseq.utils | rank   2: capabilities =  6.1  ; total memory = 10.917 GB ; name = NVIDIA GeForce GTX 1080 Ti              
+2021-11-30 14:41:19 | INFO | fairseq.utils | rank   3: capabilities =  6.1  ; total memory = 10.917 GB ; name = NVIDIA GeForce GTX 1080 Ti              
+2021-11-30 14:41:19 | INFO | fairseq.utils | ***********************CUDA enviroments for all 4 workers***********************
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | training on 4 devices (GPUs/TPUs)
+2021-11-30 14:41:19 | INFO | fairseq_cli.train | max tokens per GPU = 20000 and batch size per GPU = None
+2021-11-30 14:41:19 | INFO | fairseq.trainer | Preparing to load checkpoint /home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline/checkpoint_last.pt
+2021-11-30 14:41:19 | INFO | fairseq.trainer | No existing checkpoint found /home/wangjie/code/part1/Fairseq-ASR/../checkpoints/librispeech/asr/1130_1441_train_ctc_baseline/checkpoint_last.pt
+2021-11-30 14:41:19 | INFO | fairseq.trainer | loading train data for epoch 1
+2021-11-30 14:41:19 | INFO | fairseq.tasks.speech_to_text | pre-tokenizer: {'tokenizer': None}
+2021-11-30 14:41:19 | INFO | fairseq.tasks.speech_to_text | tokenizer: {'bpe': 'sentencepiece', 'sentencepiece_model': '/home/wangjie/code/part1/st/librispeech/spm_unigram10000.model'}
+2021-11-30 14:41:19 | INFO | fairseq.tasks.speech_to_text | src tokenizer: {'bpe': 'sentencepiece', 'sentencepiece_model': '/home/wangjie/code/part1/st/librispeech/spm_unigram10000.model'}
+2021-11-30 14:41:20 | INFO | fairseq.data.audio.speech_to_text_dataset | SpeechToTextDataset(split="train-clean-100", n_samples=28539, prepend_tgt_lang_tag=False, shuffle=False, transforms=CompositeAudioFeatureTransform(
+    UtteranceCMVN(norm_means=True, norm_vars=True)
+    SpecAugmentTransform(time_warp_w=0, freq_mask_n=2, freq_mask_f=27, time_mask_n=2, time_mask_t=100, time_mask_p=1.0)
+))
+2021-11-30 14:41:20 | INFO | fairseq.data.audio.speech_to_text_dataset | SpeechToTextDataset(split="train-clean-360", n_samples=104014, prepend_tgt_lang_tag=False, shuffle=False, transforms=CompositeAudioFeatureTransform(
+    UtteranceCMVN(norm_means=True, norm_vars=True)
+    SpecAugmentTransform(time_warp_w=0, freq_mask_n=2, freq_mask_f=27, time_mask_n=2, time_mask_t=100, time_mask_p=1.0)
+))
+2021-11-30 14:41:21 | INFO | fairseq.data.audio.speech_to_text_dataset | SpeechToTextDataset(split="train-other-500", n_samples=148688, prepend_tgt_lang_tag=False, shuffle=False, transforms=CompositeAudioFeatureTransform(
+    UtteranceCMVN(norm_means=True, norm_vars=True)
+    SpecAugmentTransform(time_warp_w=0, freq_mask_n=2, freq_mask_f=27, time_mask_n=2, time_mask_t=100, time_mask_p=1.0)
+))
+2021-11-30 14:41:58 | INFO | fairseq.trainer | NOTE: your device does NOT support faster training with --fp16, please switch to FP32 which is likely to be faster
+2021-11-30 14:41:58 | INFO | fairseq.trainer | begin training epoch 1
+2021-11-30 14:41:58 | INFO | fairseq_cli.train | Start iterating over samples
+2021-11-30 14:42:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 64.0
+2021-11-30 14:42:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-11-30 14:42:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-11-30 14:42:46 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-11-30 14:42:57 | INFO | train_inner | epoch 001:    104 / 3404 loss=24.243, trans_loss=13.089, nll_loss=12.986, ctc_loss=50.268, total=3234.83, n_correct=87.37, ppl=8111.44, accuracy=2.701, wps=7992.3, ups=2.47, wpb=3234.8, bsz=82.7, num_updates=100, lr=2.0099e-05, gnorm=20.916, clip=71, loss_scale=8, train_wall=41, gb_free=8.8, wall=98
+2021-11-30 14:43:38 | INFO | train_inner | epoch 001:    204 / 3404 loss=11.816, trans_loss=11.639, nll_loss=11.381, ctc_loss=12.228, total=3200, n_correct=182.16, ppl=2667.16, accuracy=5.692, wps=7733, ups=2.42, wpb=3200, bsz=82.2, num_updates=200, lr=4.0098e-05, gnorm=1.055, clip=0, loss_scale=8, train_wall=41, gb_free=8.4, wall=139
+2021-11-30 14:44:20 | INFO | train_inner | epoch 001:    304 / 3404 loss=10.774, trans_loss=10.691, nll_loss=10.315, ctc_loss=10.968, total=3235.13, n_correct=227.14, ppl=1273.65, accuracy=7.021, wps=7693.7, ups=2.38, wpb=3235.1, bsz=84.6, num_updates=300, lr=6.0097e-05, gnorm=0.652, clip=0, loss_scale=8, train_wall=42, gb_free=8.5, wall=181
+2021-11-30 14:45:03 | INFO | train_inner | epoch 001:    404 / 3404 loss=10.122, trans_loss=10.129, nll_loss=9.644, ctc_loss=10.105, total=3241.03, n_correct=267.53, ppl=799.84, accuracy=8.254, wps=7651.4, ups=2.36, wpb=3241, bsz=86.2, num_updates=400, lr=8.0096e-05, gnorm=0.511, clip=0, loss_scale=8, train_wall=42, gb_free=8.9, wall=224
+2021-11-30 14:45:44 | INFO | train_inner | epoch 001:    504 / 3404 loss=9.866, trans_loss=9.891, nll_loss=9.347, ctc_loss=9.808, total=3197.6, n_correct=315.12, ppl=651.08, accuracy=9.855, wps=7692.7, ups=2.41, wpb=3197.6, bsz=81, num_updates=500, lr=0.000100095, gnorm=0.457, clip=0, loss_scale=8, train_wall=41, gb_free=8.4, wall=265
+2021-11-30 14:46:26 | INFO | train_inner | epoch 001:    604 / 3404 loss=9.692, trans_loss=9.69, nll_loss=9.106, ctc_loss=9.697, total=3235.52, n_correct=360, ppl=551.2, accuracy=11.126, wps=7668.6, ups=2.37, wpb=3235.5, bsz=82.2, num_updates=600, lr=0.000120094, gnorm=0.566, clip=0, loss_scale=8, train_wall=42, gb_free=8.5, wall=308
+2021-11-30 14:47:08 | INFO | train_inner | epoch 001:    704 / 3404 loss=9.575, trans_loss=9.539, nll_loss=8.927, ctc_loss=9.661, total=3243.4, n_correct=388.17, ppl=486.81, accuracy=11.968, wps=7721.7, ups=2.38, wpb=3243.4, bsz=84, num_updates=700, lr=0.000140093, gnorm=0.562, clip=0, loss_scale=8, train_wall=42, gb_free=8.7, wall=350
+2021-11-30 14:47:50 | INFO | train_inner | epoch 001:    804 / 3404 loss=9.469, trans_loss=9.394, nll_loss=8.757, ctc_loss=9.643, total=3191.78, n_correct=401.91, ppl=432.71, accuracy=12.592, wps=7658.3, ups=2.4, wpb=3191.8, bsz=79.5, num_updates=800, lr=0.000160092, gnorm=0.546, clip=0, loss_scale=8, train_wall=41, gb_free=8.9, wall=391
+2021-11-30 14:48:33 | INFO | train_inner | epoch 001:    904 / 3404 loss=9.372, trans_loss=9.269, nll_loss=8.611, ctc_loss=9.612, total=3197.63, n_correct=416.69, ppl=391.02, accuracy=13.031, wps=7490.2, ups=2.34, wpb=3197.6, bsz=84.2, num_updates=900, lr=0.000180091, gnorm=0.654, clip=0, loss_scale=8, train_wall=42, gb_free=8.7, wall=434
+2021-11-30 14:49:15 | INFO | train_inner | epoch 001:   1004 / 3404 loss=9.295, trans_loss=9.179, nll_loss=8.506, ctc_loss=9.566, total=3207.65, n_correct=433.51, ppl=363.48, accuracy=13.515, wps=7629.1, ups=2.38, wpb=3207.7, bsz=81.8, num_updates=1000, lr=0.00020009, gnorm=0.63, clip=0, loss_scale=8, train_wall=42, gb_free=8.3, wall=476
+2021-11-30 14:50:19 | INFO | train_inner | epoch 001:   1104 / 3404 loss=9.221, trans_loss=9.106, nll_loss=8.418, ctc_loss=9.492, total=3224.6, n_correct=443.92, ppl=342.07, accuracy=13.767, wps=4987.9, ups=1.55, wpb=3224.6, bsz=82.5, num_updates=1100, lr=0.000220089, gnorm=0.639, clip=0, loss_scale=8, train_wall=53, gb_free=8.2, wall=541
+2021-11-30 14:53:16 | INFO | train_inner | epoch 001:   1204 / 3404 loss=9.143, trans_loss=9.039, nll_loss=8.34, ctc_loss=9.386, total=3223.8, n_correct=455.77, ppl=323.98, accuracy=14.138, wps=1825.3, ups=0.57, wpb=3223.8, bsz=86.6, num_updates=1200, lr=0.000240088, gnorm=0.65, clip=0, loss_scale=8, train_wall=142, gb_free=8.9, wall=717
+2021-11-30 14:56:06 | INFO | train_inner | epoch 001:   1304 / 3404 loss=9.064, trans_loss=8.988, nll_loss=8.279, ctc_loss=9.242, total=3200.05, n_correct=460.96, ppl=310.69, accuracy=14.405, wps=1880.2, ups=0.59, wpb=3200.1, bsz=82.4, num_updates=1300, lr=0.000260087, gnorm=0.609, clip=0, loss_scale=8, train_wall=170, gb_free=8.7, wall=888
+2021-11-30 14:58:40 | INFO | train_inner | epoch 001:   1404 / 3404 loss=8.981, trans_loss=8.947, nll_loss=8.229, ctc_loss=9.06, total=3169.74, n_correct=463.15, ppl=300.07, accuracy=14.612, wps=2059.4, ups=0.65, wpb=3169.7, bsz=81.3, num_updates=1400, lr=0.000280086, gnorm=0.624, clip=0, loss_scale=8, train_wall=120, gb_free=8.1, wall=1041
+2021-11-30 15:01:24 | INFO | train_inner | epoch 001:   1504 / 3404 loss=8.888, trans_loss=8.895, nll_loss=8.168, ctc_loss=8.87, total=3207.69, n_correct=476.69, ppl=287.65, accuracy=14.861, wps=1955.4, ups=0.61, wpb=3207.7, bsz=82.9, num_updates=1500, lr=0.000300085, gnorm=0.71, clip=0, loss_scale=8, train_wall=164, gb_free=8.7, wall=1205
+2021-11-30 15:04:09 | INFO | train_inner | epoch 001:   1604 / 3404 loss=8.788, trans_loss=8.842, nll_loss=8.106, ctc_loss=8.661, total=3203.98, n_correct=489.39, ppl=275.46, accuracy=15.274, wps=1950.3, ups=0.61, wpb=3204, bsz=83, num_updates=1600, lr=0.000320084, gnorm=0.658, clip=0, loss_scale=8, train_wall=164, gb_free=8.9, wall=1370
+2021-11-30 15:07:01 | INFO | train_inner | epoch 001:   1704 / 3404 loss=8.702, trans_loss=8.797, nll_loss=8.052, ctc_loss=8.48, total=3163.25, n_correct=491.64, ppl=265.44, accuracy=15.542, wps=1830, ups=0.58, wpb=3163.2, bsz=81.1, num_updates=1700, lr=0.000340083, gnorm=0.682, clip=0, loss_scale=8, train_wall=172, gb_free=8.7, wall=1543
+2021-11-30 15:09:50 | INFO | train_inner | epoch 001:   1804 / 3404 loss=8.604, trans_loss=8.742, nll_loss=7.988, ctc_loss=8.284, total=3214.15, n_correct=511.85, ppl=253.8, accuracy=15.925, wps=1908.7, ups=0.59, wpb=3214.2, bsz=81.2, num_updates=1800, lr=0.000360082, gnorm=0.614, clip=0, loss_scale=8, train_wall=155, gb_free=8.8, wall=1711
+2021-11-30 15:12:44 | INFO | train_inner | epoch 001:   1904 / 3404 loss=8.518, trans_loss=8.691, nll_loss=7.928, ctc_loss=8.113, total=3244.14, n_correct=526.18, ppl=243.58, accuracy=16.219, wps=1857.7, ups=0.57, wpb=3244.1, bsz=86.4, num_updates=1900, lr=0.000380081, gnorm=0.677, clip=0, loss_scale=8, train_wall=80, gb_free=9, wall=1886
+2021-11-30 15:15:35 | INFO | train_inner | epoch 001:   2004 / 3404 loss=8.445, trans_loss=8.652, nll_loss=7.883, ctc_loss=7.962, total=3203.45, n_correct=541.35, ppl=236.02, accuracy=16.899, wps=1875.2, ups=0.59, wpb=3203.5, bsz=82.8, num_updates=2000, lr=0.00040008, gnorm=0.63, clip=0, loss_scale=8, train_wall=148, gb_free=8.7, wall=2057
+2021-11-30 15:18:21 | INFO | train_inner | epoch 001:   2104 / 3404 loss=8.348, trans_loss=8.586, nll_loss=7.805, ctc_loss=7.793, total=3290.85, n_correct=561.19, ppl=223.64, accuracy=17.053, wps=1985, ups=0.6, wpb=3290.8, bsz=87.4, num_updates=2100, lr=0.000420079, gnorm=0.676, clip=0, loss_scale=8, train_wall=98, gb_free=8.8, wall=2222
+2021-11-30 15:21:06 | INFO | train_inner | epoch 001:   2204 / 3404 loss=8.262, trans_loss=8.529, nll_loss=7.739, ctc_loss=7.638, total=3213.27, n_correct=566.94, ppl=213.6, accuracy=17.644, wps=1942.6, ups=0.6, wpb=3213.3, bsz=83.8, num_updates=2200, lr=0.000440078, gnorm=0.654, clip=0, loss_scale=16, train_wall=86, gb_free=8.9, wall=2388
+2021-11-30 15:23:44 | INFO | train_inner | epoch 001:   2304 / 3404 loss=8.204, trans_loss=8.494, nll_loss=7.698, ctc_loss=7.526, total=3208.8, n_correct=571.38, ppl=207.59, accuracy=17.807, wps=2034.1, ups=0.63, wpb=3208.8, bsz=81.8, num_updates=2300, lr=0.000460077, gnorm=0.659, clip=0, loss_scale=16, train_wall=103, gb_free=8.9, wall=2545
+2021-11-30 15:26:25 | INFO | train_inner | epoch 001:   2404 / 3404 loss=8.121, trans_loss=8.43, nll_loss=7.623, ctc_loss=7.398, total=3219.13, n_correct=592.92, ppl=197.17, accuracy=18.419, wps=2006, ups=0.62, wpb=3219.1, bsz=82.8, num_updates=2400, lr=0.000480076, gnorm=0.661, clip=0, loss_scale=16, train_wall=129, gb_free=8.9, wall=2706
+2021-11-30 15:29:07 | INFO | train_inner | epoch 001:   2504 / 3404 loss=8.062, trans_loss=8.378, nll_loss=7.562, ctc_loss=7.324, total=3247.89, n_correct=611.81, ppl=189.03, accuracy=18.837, wps=2007.2, ups=0.62, wpb=3247.9, bsz=83.4, num_updates=2500, lr=0.000500075, gnorm=0.678, clip=0, loss_scale=16, train_wall=96, gb_free=8, wall=2868
+2021-11-30 15:31:57 | INFO | train_inner | epoch 001:   2604 / 3404 loss=8, trans_loss=8.337, nll_loss=7.515, ctc_loss=7.212, total=3221.65, n_correct=614.78, ppl=182.88, accuracy=19.083, wps=1894.9, ups=0.59, wpb=3221.7, bsz=84.2, num_updates=2600, lr=0.000520074, gnorm=0.652, clip=0, loss_scale=16, train_wall=146, gb_free=8.7, wall=3038
