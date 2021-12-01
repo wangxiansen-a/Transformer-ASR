@@ -70,7 +70,9 @@ Generate test-clean with beam=5: WER: 6.44&emsp;&emsp;Generate test-other with b
 |it's tremendously well put on too	|it's tremendously well put on too|
 |we never had so many of them in here before	|we never had so many of them in here before|
 |there are few changes in the old quarter|	there are few changes in the old quarter|
-|i didn't preach without direction|	i didn't preach without direction|
+|i didn't preach without direction|	i didn't preach without direction|  
+
+全部的识别结果在results文件夹里
 
 <br/>
 <br/>
