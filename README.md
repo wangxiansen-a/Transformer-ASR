@@ -51,8 +51,8 @@ librispeech
 <br/>
   
 ## 3.模型测试结果部分ASR实例展示
-&emsp;&emsp;Generate test-clean with beam=5: WER: 6.44&emsp;&emsp;Generate test-other with beam=5: WER: 12.60  
-&emsp;&emsp;模型在LibriSpeech数据集的test-clean测试集上上的识别准确率达到了93.56%
+Generate test-clean with beam=5: WER: 6.44&emsp;&emsp;Generate test-other with beam=5: WER: 12.60  
+模型在LibriSpeech数据集的test-clean测试集上上的识别准确率达到了93.56%
 <br/>
 <br/>
 
@@ -76,7 +76,7 @@ librispeech
 <br/>
 
 ## 5.训练完成的模型下载地址
-&emsp;&emsp;模型下载地址：链接：https://pan.baidu.com/s/1Ft0lfk5Y6LYxuDsgSat4_A 提取码：1234   
-&emsp;&emsp;需要数据集的可以联系邮箱wangcoder@outlook.com
+模型下载地址：链接：https://pan.baidu.com/s/1Ft0lfk5Y6LYxuDsgSat4_A 提取码：1234   
+需要数据集的可以联系邮箱wangcoder@outlook.com
 
 
