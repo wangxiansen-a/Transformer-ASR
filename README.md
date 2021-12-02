@@ -3,7 +3,7 @@
 ## 1.简要说明
 
 目前支持功能：对LibriSpeech ASR数据集的运行脚本； 通过读取yaml配置文件进行训练； 速度扰动、SpecAugmet； Conformer结构模型  
-详细内容见报告：2101798-王杰
+详细内容见报告：2101798-王杰.pdf
 <br/>
 <br/>
 ## 2.安装
@@ -26,10 +26,9 @@ make -j src.build CUDA_HOME=<path to cuda install>
 pip install pandas sentencepiece configargparse gpustat tensorboard editdistance
 ```
 <br/>
-<br/>
 
 ## 3.代码结构
-以librispeech/asr为例：
+egs/librispeech/asr：
 ```markdown
 librispeech  
 ├── conf  
