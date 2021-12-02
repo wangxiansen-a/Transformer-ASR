@@ -30,7 +30,7 @@ pip install pandas sentencepiece configargparse gpustat tensorboard editdistance
 ## 3.代码结构
 egs/librispeech/asr：
 ```markdown
-librispeech  
+asr 
 ├── conf  
 ├── local  
 │   ├── monitor.sh  
